@@ -1,0 +1,151 @@
+// Name:            Checkbox
+// Description:     Styles the checkbox to look fancy
+//
+// Component:       `checkbox`
+//
+// ========================================================================
+
+// Variables
+// @file__element--property_modifier
+// ========================================================================
+
+@checkbox__margin                                   : @field__margin;
+@checkbox__label--padding-left                      : 23px;
+
+@checkbox__label-before--height                     : 15px;
+@checkbox__label-before--width                      : 15px;
+@checkbox__label-before--border                     : 1px solid @vars__input--border-color;
+@checkbox__label-before--background                 : #fff;
+@checkbox__label-before--background_disabled        : #f1f1f1;
+
+@checkbox__label-after--height                      : 9px;
+@checkbox__label-after--width                       : 9px;
+@checkbox__label-after--background                  : @vars__input--border-color;
+@checkbox__label-after--background_checked          : #444;
+@checkbox__label-after--background_disabled-checked : darken(@vars__input--border-color, 10%);
+@checkbox__label-after--top                         : 4px;
+@checkbox__label-after--left                        : 4px;
+@checkbox__label-after--transform                   : ~"scale(0)";
+@checkbox__label-after--transform_hover             : ~"scale(1)";
+@checkbox__label-after--transform_checked           : ~"scale(1)";
+@checkbox__label-after--transform_disabled-hover    : ~"scale(0)";
+@checkbox__label-after--transform_disabled-checked  : ~"scale(1)";
+
+// IE8 doesnt like :checked
+
+/* ========================================================================
+   Component: Checkbox
+ ========================================================================== */
+
+@{vars__prefix}.e-checkbox {
+    line-height: normal;
+    position: relative;
+    margin: @checkbox__margin;
+    .hook-checkbox;
+}
+
+@{vars__prefix}.e-checkbox .s-input {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    .opacity(0);
+    .hook-checkbox-input;
+}
+
+@{vars__prefix}.e-checkbox .s-input:disabled {
+    cursor: default;
+}
+
+@{vars__prefix}.e-checkbox .s-label {
+    position: relative;
+    margin: 0;
+    .direction-mixin(padding-left; @checkbox__label--padding-left);
+    .hook-checkbox-label;
+}
+
+@{vars__prefix}.e-checkbox .s-input:disabled + .s-label {
+    .opacity(.75);
+}
+
+@{vars__prefix}.e-checkbox .s-label:before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    line-height: @checkbox__label-before--width;
+    width: @checkbox__label-before--height;
+    height: @checkbox__label-before--width;
+    border: @checkbox__label-before--border;
+    background: @checkbox__label-before--background;
+    .direction-mixin(left; 0);
+    .hook-checkbox-label-before;
+}
+
+@{vars__prefix}.e-checkbox .s-label:after {
+    content: ' ';
+    position: absolute;
+    visibility: hidden;
+    width: @checkbox__label-after--width;
+    height: @checkbox__label-after--height;
+    background: @checkbox__label-after--background;
+    top: @checkbox__label-after--top;
+    .direction-mixin(left; @checkbox__label-after--left);
+    .opacity(0);
+    .transform(@checkbox__label-after--transform);
+    .transition(all 0.2s ease);
+    .hook-checkbox-label-after;
+}
+
+@{vars__prefix}.e-checkbox .s-input:hover + .s-label:after {
+    visibility: visible;
+    .opacity(1);
+    .transform(@checkbox__label-after--transform_hover);
+    .hook-checkbox-label-after-hover;
+}
+
+@{vars__prefix}.e-checkbox .s-input:checked + .s-label:after {
+    visibility: visible;
+    background: @checkbox__label-after--background_checked;
+    .opacity(1);
+    .transform(@checkbox__label-after--transform_checked);
+    .hook-checkbox-label-after-checked;
+}
+
+@{vars__prefix}.e-checkbox .s-input:disabled + .s-label:before,
+@{vars__prefix}.e-checkbox .s-input:disabled:checked + .s-label:before {
+    background: @checkbox__label-before--background_disabled;
+    .hook-checkbox-label-before-disabled;
+}
+
+@{vars__prefix}.e-checkbox .s-input:disabled:hover + .s-label:after {
+    visibility: hidden;
+    .opacity(0);
+    .transform(@checkbox__label-after--transform_disabled-hover);
+    .hook-checkbox-label-after-disabled;
+}
+
+@{vars__prefix}.e-checkbox .s-input:disabled:checked + .s-label:after {
+    visibility: visible;
+    background: @checkbox__label-after--background_disabled-checked;
+    .opacity(1);
+    .transform(@checkbox__label-after--transform_disabled-checked);
+    .hook-checkbox-label-after-disabled-checked;
+}
+
+// Hooks
+// --------------------------------------------------
+.hook-checkbox-misc;
+
+.hook-checkbox() {}
+.hook-checkbox-input() {}
+.hook-checkbox-label() {}
+.hook-checkbox-label-before() {}
+.hook-checkbox-label-before-disabled() {}
+.hook-checkbox-label-after() {}
+.hook-checkbox-label-after-hover() {}
+.hook-checkbox-label-after-checked() {}
+.hook-checkbox-label-after-disabled() {}
+.hook-checkbox-label-after-disabled-checked() {}
+
+.hook-checkbox-misc() {}

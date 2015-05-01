@@ -1,0 +1,101 @@
+// Name:            Grid
+// Description:     Create our lovely grid
+//
+// Component:       `grid`
+//                  'column'
+//
+// ========================================================================
+
+// Variables
+// @file__element--property_modifier
+// ========================================================================
+
+//** Number of columns in the grid.
+@grid__columns                   : 12;
+@grid__column--margin-top        : 1rem;
+@grid__column--margin-bottom     : 1rem;
+@grid__ie8-column--margin-top    : (unit(@grid__column--margin-top) * @vars__base--font-size);
+@grid__ie8-column--margin-bottom : (unit(@grid__column--margin-bottom) * @vars__base--font-size);
+
+//** Padding between columns. Gets divided in half for the left and right.
+@grid__gutter--width             : 1rem;
+@grid__ie8-gutter--width         : (unit(@grid__gutter--width) * @vars__base--font-size);
+
+//** For `@screen-sm-min` and up.
+@grid__container--sm             : 720px;
+
+//** For `@screen-md-min` and up.
+@grid__container--md             : 940px;
+
+//** For `@screen-lg-min` and up.
+@grid__container--lg             : 1140px;
+
+//** For `@screen-xl-min` and up.
+@grid__container--xl             : 1540px;
+
+/* ========================================================================
+   Component: Grid
+ ========================================================================== */
+
+.l-grid {
+    font-size: 0;
+    .make-row;
+}
+
+/* ========================================================================
+   Component: Column
+ ========================================================================== */
+
+.l-grid .l-column {
+    margin-top: @grid__column--margin-top;
+    margin-bottom: @grid__column--margin-bottom;
+    font-size: @vars__base--font-size;
+
+    & when (@vars__ie8-support = true) {
+        .lt-ie9 & {
+            margin-top: @grid__ie8-column--margin-top;
+            margin-bottom: @grid__ie8-column--margin-bottom;
+        }
+    }
+
+}
+
+.make-grid-columns();
+
+.l-container {
+    margin: 0 20px;
+}
+.make-grid(xs);
+
+.hook-responsive-sm() {
+    .l-container {
+        margin: 0 auto;
+        width: @grid__container--sm;
+    }
+    .make-grid(sm);
+}
+
+.hook-responsive-md() {
+    .l-container {
+        margin: 0 auto;
+        width: @grid__container--md;
+    }
+    .make-grid(md);
+}
+
+.hook-responsive-lg() {
+    .l-container {
+        margin: 0 auto;
+        width: @grid__container--lg;
+    }
+    .make-grid(lg);
+}
+
+.hook-responsive-xl() {
+    .l-container {
+        margin: 0 auto;
+        width: @grid__container--xl;
+    }
+    .make-grid(xl);
+}
+
