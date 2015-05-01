@@ -1,7 +1,7 @@
 # boilerplate-node-webkit
 ![Latest Github release](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
 
-A skeleton framework for using node-webkit with mithril.js
+A skeleton framework for using node-webkit with mithril.js showing a simple to do app.
 ## Assets
 [mithril.js](http://lhorie.github.io/mithril/) the MVC framework I have choosen to use.
 
