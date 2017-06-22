@@ -1,13 +1,19 @@
-
 'use strict';
 /*global m */
+
+var gui = require('nw.gui');
+var path = require('path-extra');
+
 var app = app || {};
 
-app.ENTER_KEY = 13;
-app.ESC_KEY = 27;
+app.name = 'appName';
+app.homeDir = path.homedir(),
+app.tempFolder = '/.' + app.name + '/temp',
+app.collectionsFolder = '/.' + app.name + '/collections';
+app.version = m.prop(gui.App.manifest.version);
 
-m.route.mode = 'hash';
-m.route(document.getElementById('todoapp'), '/', {
-	'/': app,
-	'/:filter': app
-});
+Messenger.options = {
+    extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+    theme: 'flat',
+    maxMessages: 3,
+}

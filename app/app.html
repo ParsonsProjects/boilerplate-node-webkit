@@ -4,34 +4,27 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Frontend Framework</title>
+    <title>App</title>
 
     <!-- Framework -->
-    <link href="assets/css/animate.min.css" rel="stylesheet" />
-    <link href="assets/css/core.css" rel="stylesheet" />
-    <link href="assets/css/app.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/messenger.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/messenger-theme-flat.css">
     <!-- Plugins -->
 
 </head>
-<body>
-
-    <section id="todoapp"></section>
-
-    <footer class="l-container">
-        <p></p>
-        <p>Double-click to edit a todo</p>
-    </footer>
+<body id="window">
 
     <!-- jQuery -->
-    <script src="assets/libs/jquery-1.9.1.min.js"></script>
-    <script src="assets/libs/prefixfree.min.js"></script>
-    <script src="assets/libs/mithril/mithril.js"></script>
-    <script src="scripts/models/todo.js"></script>
-    <script src="scripts/models/storage.js"></script>
-    <script src="scripts/controllers/todo.js"></script>
-    <script src="scripts/views/main-view.js"></script>
-    <script src="scripts/views/footer-view.js"></script>
+    <script src="../nw/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="assets/js/semantic.min.js"></script>
+    <script src="assets/js/jquery.hotkeys.js"></script>
+    <script src="assets/js/messenger.min.js"></script>
+
+    <script src="../nw/node_modules/mithril/mithril.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/routes.js"></script>
 
 </body>
 </html>
